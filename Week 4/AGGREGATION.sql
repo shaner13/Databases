@@ -1,41 +1,38 @@
-alter session  set current_schema = POBYRNE;
+alter session  set current_schema = SRiedy;
 
-DESCRIBE M_Movies;
+DESCRIBE POBYRNE.M_Movies;
+SELECT * FROM POBYRNE.M_MOVIES;
 
 --1
-SELECT * FROM M_MOVIES;
+SELECT MTITLE FROM POBYRNE.M_MOVIES;
 
 --2
-SELECT DISTINCT Genre FROM M_Movies;
+SELECT DISTINCT Genre FROM POBYRNE.M_Movies;
 
 --3
 SELECT Genre, COUNT(*) 
-FROM M_Movies 
+FROM POBYRNE.M_Movies 
 GROUP BY Genre;
-
 
 --4
-SELECT Genre, COUNT(*)
-SELECT MAX(Running_Time), 
-FROM M_Movies;
-
-SELECT Genre, COUNT(*)
-SELECT MIN(Running_Time), 
-FROM M_Movies;
-
+SELECT Genre,
+MAX(Running_time), MIN(Running_Time) 
+FROM POBYRNE.M_Movies 
 GROUP BY Genre;
-MAX MIN RUNNING_TIME
 
 --5
-SELECT COUNT(*)
-FROM M_Movies
-WHERE Running_Time > 90 < 180;
+SELECT Genre, COUNT(*)"Movies between 90 and 180 minutes"
+FROM POBYRNE.M_Movies
+WHERE Running_Time BETWEEN 90 AND 180 
+GROUP BY Genre;
 
 --6
-Select Genre, Rating
-
+Select Genre, Rating, COUNT(*) "Number Of Movies"
+FROM POBYRNE.M_Movies
+GROUP BY Genre, Rating;
 
 --7
-SELECT Rating, COUNT(*)
+SELECT Rating "Average over 66M"
 FROM M_Movies
-WHERE Box_Office > 66;
+GROUP BY Rating
+HAVING avg(Box_Office) > 66;
